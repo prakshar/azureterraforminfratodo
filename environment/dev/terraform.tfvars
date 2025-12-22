@@ -19,6 +19,15 @@ rgs = {
     project = "infratodo" }
 
   }
+    rg3 = {
+    name     = "rgtodo3"
+    location = "east us"
+    tags = {
+      environment = "dev"
+      owner       = "prakhar"
+    project = "infratodo" }
+
+  }
 }
 
 stg = {
