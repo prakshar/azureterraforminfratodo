@@ -19,7 +19,7 @@ rgs = {
     project = "infratodo" }
 
   }
-    rg3 = {
+  rg3 = {
     name     = "rgtodo3"
     location = "east us"
     tags = {
@@ -99,6 +99,76 @@ vns = {
     location            = "central india"
     resource_group_name = "rgtodo1"
     address_space       = ["10.0.0.0/16"]
+
+  }
+}
+
+nic = {
+  nic1 = {
+
+    nicname              = "vmnic"
+    location             = "central india"
+    resource_group_name  = "rgtodo1"
+    subnetname           = "frontendsubnet"
+    pipname              = "pipfrontend"
+    virtual_netwrok_name = "rgdovnet"
+    ip_configuration = [{
+      name                          = internal
+      private_ip_address_allocation = dynamic
+      }
+    ]
+
+  }
+}
+
+vms = {
+  vm1 = {
+
+    vmname              = "frontendvm"
+    resource_group_name = "rgtodo1"
+    location            = "central india"
+    size                = "Standard_F2"
+    nicname             = "vmnic"
+    admin_username      = "vmfrontend"
+    admin_password      = "test@12345"
+
+    os_disk = {
+      caching              = "ReadWrite"
+      storage_account_type = "Standard_LRS"
+    }
+
+    source_image_reference = {
+      publisher = "Canonical"
+      offer     = "0001-com-ubuntu-server-jammy"
+      sku       = "22_04-lts"
+      version   = "latest"
+    }
+  }
+
+
+
+
+  vm2 = {
+
+    vmname              = "backendvm"
+    resource_group_name = "rgtodo1"
+    location            = "central india"
+    size                = "Standard_F2"
+    nicname             = "vmnic"
+    admin_username      = "vmbackend"
+    admin_password      = "test@12345"
+
+    os_disk = {
+      caching              = "ReadWrite"
+      storage_account_type = "Standard_LRS"
+    }
+
+    source_image_reference = {
+      publisher = "Canonical"
+      offer     = "0001-com-ubuntu-server-jammy"
+      sku       = "22_04-lts"
+      version   = "latest"
+    }
 
   }
 }

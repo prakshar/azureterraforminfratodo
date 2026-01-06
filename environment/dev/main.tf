@@ -23,3 +23,14 @@ module "azurerm_virtual_network" {
   subnets = var.subnets
   
 }
+module "azurerm_nic" {
+  depends_on = [ module.azurerm_virtual_network ]
+  source = "../../module/azurerm_nic"
+  nic = var.nic
+  }
+
+module "azurerm_virtualmachine" {
+  depends_on = [ module.azurerm_nic ]
+  source = "../../module/azurerm_virtualmachine"
+  vms = var.vms
+}
