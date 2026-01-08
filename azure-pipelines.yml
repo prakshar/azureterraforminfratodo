@@ -5,4 +5,20 @@ pool:
   prakharself
 
 steps:
-  
+  - task: TerraformInstaller@1
+    inputs:
+      terraformVersion: 'latest'
+
+
+  - task: TerraformTask@5
+    inputs:
+      provider: 'azurerm'
+      command: 'init'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
+      backendServiceArm: 'xtrahunt'
+      backendAzureRmResourceGroupName: 'rgtodo1'
+      backendAzureRmStorageAccountName: 'cerrebal0708'
+      backendAzureRmContainerName: 'tfstate'
+      backendAzureRmKey: 'dev.terraform.tfstate'
+
+
