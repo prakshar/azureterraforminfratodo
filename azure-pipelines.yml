@@ -1,0 +1,8 @@
+trigger: 
+- none
+
+pool:
+  prakharself
+
+steps:
+  
